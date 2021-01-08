@@ -13,8 +13,22 @@ const Game = () => {
     }
   }).join(' ');
 
+  const [poemList, setPoemList] = useState([]);
+  const [player, setPlayer] = useState(1);
+
+  const addPoem = (poem) => {
+    const newPoemsList = [...poemList];
+
+    newPoemsList.push(poem);
+    setPlayer(player + 1)
+
+    setPoemList(newPoemsList);
+  };
+
+  console.log(poemList);
+
   return (
-    <div className="Game">
+    <div className='Game'>
       <h2>Game</h2>
 
       <p>Each player should take turns filling out and submitting the form below. Each turn should be done individually and <em>in secret!</em> Take inspiration from the revealed recent submission. When all players are finished, click the final button on the bottom to reveal the entire poem.</p>
@@ -27,13 +41,13 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} onSubmitCallBack={addPoem} player={player}/>
 
-      <FinalPoem />
+      <FinalPoem poemList={poemList}/>
 
     </div>
   );
-}
+};
 
 
 const FIELDS = [
