@@ -13,7 +13,6 @@ const PlayerSubmissionForm = (props) => {
   });
 
   const [formFields, setFormFields] = useState(emptyValues);
-  const [player, setPlayer] = useState(1);
 
   const onInputChange = (event) => {
     const newFormFields = {
@@ -26,8 +25,15 @@ const PlayerSubmissionForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    // props.addStudentCallback(formFields);
-    setPlayer(player + 1);
+    const poem = props.fields.map((field) => {
+      if (field.key) {
+        return formFields[field.key];
+      } else {
+        return field;
+      }
+    });
+
+    props.addPoemCallback(poem.join(' '));
     setFormFields(emptyValues);
 
   };
@@ -49,7 +55,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{player}</h3>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 

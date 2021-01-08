@@ -2,13 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
+
 const FinalPoem = (props) => {
 
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
+        {props.poemList.map((poem, i) => (
+          <p key={i}>
+          {poem};
+          </p>
+      ))}
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
