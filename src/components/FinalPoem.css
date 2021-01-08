@@ -7,13 +7,15 @@
   flex: 0.8;
 
   padding: 1rem;
+  border-radius: 30px;
+  background-color: rgb(75, 211, 211);
   border: 2px black solid;
   box-shadow: 5px 10px black;
   transition: 0.25s;
 }
 
 .FinalPoem__reveal-btn:hover {
-  background-color: tomato;
+  background-color: pink;
 }
 
 .FinalPoem__poem {

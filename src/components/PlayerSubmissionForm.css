@@ -9,7 +9,7 @@
 .PlayerSubmissionForm__poem-inputs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .PlayerSubmissionForm__submit {
@@ -20,15 +20,16 @@
 .PlayerSubmissionForm__submit-btn {
   flex: 0.5;
   margin: 2rem;
-
+  border-radius: 30px;
   padding: 0.5rem;
+  background-color: rgb(75, 211, 211);
   border: 2px black solid;
   box-shadow: 5px 10px black;
   transition: 0.25s;
 }
 
 .PlayerSubmissionForm__submit-btn:hover {
-  background-color: tomato;
+  background-color: pink;
 }
 
 .PlayerSubmissionFormt__input--invalid {

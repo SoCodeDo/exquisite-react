@@ -4,5 +4,6 @@
 
 .RecentSubmission__submission {
   text-align: center;
-  line-height: 3rem;
+  line-height: 4rem;
+  background-color: pink;
 }
