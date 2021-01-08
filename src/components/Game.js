@@ -25,7 +25,7 @@ const Game = () => {
     setPoemList(newPoemsList);
   };
 
-  console.log(poemList);
+  // console.log(poemList);
 
   return (
     <div className='Game'>

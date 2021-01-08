@@ -7,100 +7,113 @@ const PlayerSubmissionForm = () => {
   return (
     const PlayerSubmissionForm = (props) => {
       const [poem, setPoem] = useState({
-        adjective1: '',
+        adj1: '',
         noun1: '',
-        adverb: '',
+        adv: '',
         verb: '',
-        adjective2: '',
+        adj2: '',
         noun2: '',
       });
     
-      // const onUserInputChange = (event) => {
+      const onUserInputChange = (event) => {
+        const { name, value } = event.target;
+    
+        const newPoem = {
+          ...poem,
+        };
+    
+        newPoem[name] = value;
+        setPoem(newPoem);
+      };
+    
+      // const onNoun1Change = (event) => {
       //   const newPoem = {
       //     ...poem,
+      //     noun1: event.target.value,
       //   };
     
-      //   newPoem[event.target.name]=[event.target.value];
       //   setPoem(newPoem);
       // };
     
-      const onAdjective1Change = (event) => {
-        const newPoem = {
-          ...poem,
-          adjective1: event.target.value,
-        };
+      // const onAdverbChange = (event) => {
+      //   const newPoem = {
+      //     ...poem,
+      //     adverb: event.target.value,
+      //   };
     
-        setPoem(newPoem);
-      };
+      //   setPoem(newPoem);
+      // };
     
-      const onNoun1Change = (event) => {
-        const newPoem = {
-          ...poem,
-          noun1: event.target.value,
-        };
+      // const onVerbChange = (event) => {
+      //   const newPoem = {
+      //     ...poem,
+      //     verb: event.target.value,
+      //   };
     
-        setPoem(newPoem);
-      };
+      //   setPoem(newPoem);
+      // };
     
-      const onAdverbChange = (event) => {
-        const newPoem = {
-          ...poem,
-          adverb: event.target.value,
-        };
+      // const onAdjective2Change = (event) => {
+      //   const newPoem = {
+      //     ...poem,
+      //     adjective2: event.target.value,
+      //   };
     
-        setPoem(newPoem);
-      };
+      //   setPoem(newPoem);
+      // };
     
-      const onVerbChange = (event) => {
-        const newPoem = {
-          ...poem,
-          verb: event.target.value,
-        };
+      // const onNoun2Change = (event) => {
+      //   const newPoem = {
+      //     ...poem,
+      //     noun2: event.target.value,
+      //   };
     
-        setPoem(newPoem);
-      };
-    
-      const onAdjective2Change = (event) => {
-        const newPoem = {
-          ...poem,
-          adjective2: event.target.value,
-        };
-    
-        setPoem(newPoem);
-      };
-    
-      const onNoun2Change = (event) => {
-        const newPoem = {
-          ...poem,
-          noun2: event.target.value,
-        };
-    
-        setPoem(newPoem);
-      };
+      //   setPoem(newPoem);
+      // };
     
       const onFormSubmit = (event) => {
         event.preventDefault();
     
         if (
-          poem.adjective1 !== '' &&
+          poem.adj1 !== '' &&
           poem.noun1 !== '' &&
-          poem.adverb !== '' &&
+          poem.adv !== '' &&
           poem.verb !== '' &&
-          poem.adjective2 !== '' &&
+          poem.adj2 !== '' &&
           poem.noun2 !== ''
         ) {
           props.onSubmitCallBack(poem);
 
           setPoem({
-            adjective1: '',
+            adj1: '',
             noun1: '',
-            adverb: '',
+            adv: '',
             verb: '',
-            adjective2: '',
+            adj2: '',
             noun2: '',
           });
         }
       };
+
+      const main = props.fields.map((obj) => {
+        const userInput = poem[obj.key];
+    
+        if (obj.key) {
+          return (
+            <input
+              name={obj.key}
+              placeholder={obj.placeholder}
+              type='text'
+              key={obj.key}
+              value={userInput}
+              onChange={onUserInputChange}
+            />
+          );
+        } else {
+          return obj;
+        }
+      });
+      console.log(main);
 
       return (
         <div className='PlayerSubmissionForm'>
@@ -109,17 +122,16 @@ const PlayerSubmissionForm = () => {
           <form onSubmit={onFormSubmit} className='PlayerSubmissionForm__form'>
             <div className='PlayerSubmissionForm__poem-inputs'>
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
+           {main}
+          {/* <label htmlFor='The'>The</label> */}
 
-<label htmlFor='The'>The</label>
+ {/* <input
 
-<input
   placeholder='adjective'
   type='text'
-  onChange={onAdjective1Change}
   value={poem.adjective1}
+  onChange={onAdjective1Change}
+  
 
 />
 
@@ -160,7 +172,7 @@ const PlayerSubmissionForm = () => {
   onChange={onNoun2Change}
 />
 
-<label htmlFor='period'>.</label>
+ <label htmlFor='period'>.</label>*/}
 
 </div>
 
