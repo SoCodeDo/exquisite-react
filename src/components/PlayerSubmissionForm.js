@@ -31,12 +31,16 @@ const PlayerSubmissionForm = (props) => {
       } else {
         return field;
       }
-    });
+    }).join(' ');
+    props.addPoemCallback(poem);
 
-    props.addPoemCallback(poem.join(' '));
     setFormFields(emptyValues);
-
   };
+
+  const inputValidation = (field) => {
+    return field !== '';
+  }
+
 
 
   const inputComponents = props.fields.map((field, i) => {
@@ -47,6 +51,7 @@ const PlayerSubmissionForm = (props) => {
         value={formFields[field.key]}
         name={field.key}
         onChange={onInputChange}
+        className={inputValidation(formFields[field.key]) ? 'PlayerSubmissionForm__poem-inputs' : 'PlayerSubmissionFormt__input--invalid'}
       />;
     } else {
       return field;

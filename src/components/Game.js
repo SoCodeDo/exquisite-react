@@ -33,7 +33,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recentPoem={ poemList[poemList.length - 1] }/>
 
       <PlayerSubmissionForm fields={FIELDS} addPoemCallback={addPoem} index={index}/>
 
