@@ -17,7 +17,7 @@ const Game = () => {
   const [player, setPlayer] = useState(1);
 
   const addPoem = (poem) => {
-    const newPoemsList = [...poemList];
+    let newPoemsList = [...poemList];
 
     newPoemsList.push(poem);
     setPlayer(player + 1)
@@ -25,7 +25,9 @@ const Game = () => {
     setPoemList(newPoemsList);
   };
 
-  // console.log(poemList);
+  const poemListString = poemList.map((obj) => {
+    return `The ${obj.adj1} ${obj.noun1} ${obj.adv} ${obj.verb} the ${obj.adj2} ${obj.noun2} .`
+  })
 
   return (
     <div className='Game'>
@@ -43,7 +45,7 @@ const Game = () => {
 
       <PlayerSubmissionForm fields={FIELDS} onSubmitCallBack={addPoem} player={player}/>
 
-      <FinalPoem poemList={poemList}/>
+      <FinalPoem poemList={poemListString}/>
 
     </div>
   );

@@ -17,7 +17,6 @@ const PlayerSubmissionForm = () => {
     
       const onUserInputChange = (event) => {
         const { name, value } = event.target;
-    
         const newPoem = {
           ...poem,
         };
