@@ -34,7 +34,6 @@ const FIELDS = [
   '.',
 ];
 
-
 const Game = () => {
   const [poemList, setPoemsList] = useState([]);
   const [index, setIndex] = useState(1);
@@ -46,7 +45,7 @@ const Game = () => {
     } else {
       return field;
     }
-  }).join(' ');
+  }).join('');
 
   const addPoem = (newPoem) => {
     setIndex(index + 1);
