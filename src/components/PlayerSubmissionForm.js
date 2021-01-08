@@ -32,7 +32,7 @@ const PlayerSubmissionForm = (props) => {
         return field;
       }
     }).join(' ');
-    props.addPoemCallback(poem);
+    props.sendSubmission(poem);
 
     setFormFields(emptyValues);
   };
@@ -57,7 +57,7 @@ const PlayerSubmissionForm = (props) => {
       return field;
     }
   });
-
+if (!props.isSubmitted) {
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.index}</h3>
@@ -75,7 +75,10 @@ const PlayerSubmissionForm = (props) => {
         </div>
       </form>
     </div>
-  );
+  )
+  } else {
+  return ('')
+  }
 }
 
 PlayerSubmissionForm.propTypes = {
